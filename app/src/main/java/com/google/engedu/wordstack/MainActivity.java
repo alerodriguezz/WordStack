@@ -19,6 +19,7 @@ import android.content.res.AssetManager;
 import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.DragEvent;
 import android.view.MotionEvent;
 import android.view.View;
@@ -56,11 +57,8 @@ public class MainActivity extends AppCompatActivity {
             String line = null;
             while((line = in.readLine()) != null) {
                 String word = line.trim();
-                /**
-                 **
-                 **  YOUR CODE GOES HERE
-                 **
-                 **/
+                //add words from dictionary to words
+                words.add(word);
             }
         } catch (IOException e) {
             Toast toast = Toast.makeText(this, "Could not load dictionary", Toast.LENGTH_LONG);
@@ -143,11 +141,75 @@ public class MainActivity extends AppCompatActivity {
     public boolean onStartGame(View view) {
         TextView messageBox = (TextView) findViewById(R.id.message_box);
         messageBox.setText("Game started");
-        /**
-         **
-         **  YOUR CODE GOES HERE
-         **
-         **/
+
+        Log.i("size","Testing " + words.size());
+        //counters
+        int count_w1 =0,count_w2=0;
+
+        //random variable
+
+        int n = random.nextInt(words.size());
+
+        //Retrieve two random words from words and remove  them to avoid duplicates
+        word1=words.get(n);
+
+        //words.remove(n);
+
+        n = random.nextInt(words.size());
+
+        word2=words.get(n);
+
+        Log.i("Random Words","word1: " + word1 + " word2: " + word2);
+
+        //words.remove(n);
+
+        //Scramble the word
+
+        String temp="";
+
+        while(count_w1!=word1.length()&&count_w2!=word2.length())
+        {
+            n = random.nextInt(2);
+
+
+            if(n==0)
+            {
+                temp +=word1.charAt(count_w1);
+                count_w1++;
+            }
+
+            else
+            {
+                temp+= word2.charAt(count_w2);
+                count_w2++;
+            }
+
+            Log.i("switch", "rand: " + n + " count 1: " +count_w1+ " count 2: "+ count_w2+" " + temp);
+        }
+
+        //if word 1 ended first
+        if(count_w1==word1.length())
+        {
+            //add remaining characters of word2 to temp
+            for(int i=count_w2;i<word2.length();i++)
+            {
+                temp+= word2.charAt(i);
+            }
+        }
+        //vice versa
+        else
+        {
+            //add remaining characters of word2 to temp
+            for(int i=count_w1;i<word1.length();i++)
+            {
+                temp+= word1.charAt(i);
+            }
+        }
+
+        Log.i("scrambled word", "scrambled word: " + temp);
+
+        messageBox.setText(temp);
+
         return true;
     }
 
