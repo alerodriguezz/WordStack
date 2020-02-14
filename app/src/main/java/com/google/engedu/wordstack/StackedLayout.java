@@ -16,6 +16,7 @@
 package com.google.engedu.wordstack;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.View;
 import android.widget.LinearLayout;
 
@@ -30,20 +31,25 @@ public class StackedLayout extends LinearLayout {
     }
 
     public void push(View tile) {
-        /**
-         **
-         **  YOUR CODE GOES HERE
-         **
-         **/
+
+        if (!empty())
+        {
+            removeView(peek());
+        }
+
+        tiles.push(tile);
+        addView(peek());
+
+        Log.i("stacking...",  "stack success");
     }
 
     public View pop() {
-        View popped = null;
-        /**
-         **
-         **  YOUR CODE GOES HERE
-         **
-         **/
+        View popped = tiles.pop();
+        removeView(popped);
+        if (!empty()) {
+            addView(peek());
+        }
+
         return popped;
     }
 
@@ -56,10 +62,6 @@ public class StackedLayout extends LinearLayout {
     }
 
     public void clear() {
-        /**
-         **
-         **  YOUR CODE GOES HERE
-         **
-         **/
+        tiles.clear();
     }
 }

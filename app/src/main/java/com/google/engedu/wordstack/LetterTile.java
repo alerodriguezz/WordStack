@@ -27,18 +27,18 @@ import android.widget.TextView;
 
 public class LetterTile extends TextView {
 
-    public static final int TILE_SIZE = 150;
+    public static final int TILE_SIZE = 90;
     private Character letter;
     private boolean frozen;
 
-    public LetterTile(Context context, Character letter) {
+    public LetterTile(MainActivity context, Character letter) {
         super(context);
         this.letter = letter;
         setText(letter.toString());
         setTextAlignment(TEXT_ALIGNMENT_CENTER);
         setHeight(TILE_SIZE);
         setWidth(TILE_SIZE);
-        setTextSize(30);
+        setTextSize(20);
         setBackgroundColor(Color.rgb(255, 255, 200));
     }
 
