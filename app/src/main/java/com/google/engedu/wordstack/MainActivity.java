@@ -41,8 +41,8 @@ public class MainActivity extends AppCompatActivity {
     private static final int WORD_LENGTH = 5;
     public static final int LIGHT_BLUE = Color.rgb(176, 200, 255);
     public static final int LIGHT_GREEN = Color.rgb(200, 255, 200);
-    private View word1_box;
-    private View word2_box;
+    private ViewGroup word1_box;
+    private ViewGroup word2_box;
     private ArrayList<String> words = new ArrayList<>();
     private Random random = new Random();
     private StackedLayout stackedLayout;
@@ -57,7 +57,7 @@ public class MainActivity extends AppCompatActivity {
         try {
             InputStream inputStream = assetManager.open("words.txt");
             BufferedReader in = new BufferedReader(new InputStreamReader(inputStream));
-            String line = null;
+            String line;
             while((line = in.readLine()) != null) {
                 String word = line.trim();
                 //add words from dictionary to words
@@ -73,10 +73,10 @@ public class MainActivity extends AppCompatActivity {
         stackedLayout = new StackedLayout(this);
         verticalLayout.addView(stackedLayout, 3);
 
-        word1_box = findViewById(R.id.word1);
+        word1_box = (ViewGroup) findViewById(R.id.word1);
         word1_box.setOnTouchListener(new TouchListener());
         //word1LinearLayout.setOnDragListener(new DragListener());
-        word2_box = findViewById(R.id.word2);
+        word2_box = (ViewGroup) findViewById(R.id.word2);
         word2_box.setOnTouchListener(new TouchListener());
         //word2LinearLayout.setOnDragListener(new DragListener());
     }
@@ -140,6 +140,10 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public boolean onStartGame(View view) {
+        //removes any pre-existing tiles on
+        word1_box.removeAllViews();
+        word2_box.removeAllViews();
+        stackedLayout.clear();
 
 
         Log.i("size","Starting Game.... ");
