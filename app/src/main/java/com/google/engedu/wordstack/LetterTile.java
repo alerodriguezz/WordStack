@@ -18,6 +18,8 @@ package com.google.engedu.wordstack;
 import android.content.ClipData;
 import android.content.Context;
 import android.graphics.Color;
+import android.os.Build;
+import android.support.annotation.RequiresApi;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
@@ -27,7 +29,7 @@ import android.widget.TextView;
 
 public class LetterTile extends android.support.v7.widget.AppCompatTextView {
 
-    public static final int TILE_SIZE = 90;
+    public static final int TILE_SIZE = 130;
     private Character letter;
     private boolean frozen;
 
@@ -66,13 +68,18 @@ public class LetterTile extends android.support.v7.widget.AppCompatTextView {
         frozen = false;
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.N)
     @Override
     public boolean onTouchEvent(MotionEvent motionEvent) {
-        /**
-         **
-         **  YOUR CODE GOES HERE
-         **
-         **/
+       if(frozen)
+       {
+           return false;
+       }
+
+       startDragAndDrop( ClipData.newPlainText("",""), new View.DragShadowBuilder(this),this,0);
+
+
+
         return super.onTouchEvent(motionEvent);
     }
 }
