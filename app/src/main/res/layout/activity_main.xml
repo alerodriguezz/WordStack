@@ -26,6 +26,7 @@
 
     <LinearLayout
         android:id="@+id/vertical_layout"
+        android:gravity="center_horizontal"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_alignParentBottom="true"
@@ -36,7 +37,8 @@
             android:id="@+id/message_box"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Hello World!" />
+            android:text="Welcome to Wordstack!"
+            android:textSize="30sp"/>
 
         <LinearLayout
             android:id="@+id/word1"

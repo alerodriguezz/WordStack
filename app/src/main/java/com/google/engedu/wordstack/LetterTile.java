@@ -29,7 +29,7 @@ import android.widget.TextView;
 
 public class LetterTile extends android.support.v7.widget.AppCompatTextView {
 
-    public static final int TILE_SIZE = 130;
+    public static final int TILE_SIZE = 150;
     private Character letter;
     private boolean frozen;
 
@@ -40,7 +40,7 @@ public class LetterTile extends android.support.v7.widget.AppCompatTextView {
         setTextAlignment(TEXT_ALIGNMENT_CENTER);
         setHeight(TILE_SIZE);
         setWidth(TILE_SIZE);
-        setTextSize(20);
+        setTextSize(30);
         setBackgroundColor(Color.rgb(255, 255, 200));
     }
 
