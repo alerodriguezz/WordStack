@@ -121,14 +121,24 @@ public class MainActivity extends AppCompatActivity {
                     v.invalidate();
                     return true;
                 case DragEvent.ACTION_DROP:
+                    //String temp = "";
                     // Dropped, reassign Tile to the target Layout
                     LetterTile tile = (LetterTile) event.getLocalState();
                     tile.moveToViewGroup((ViewGroup) v);
+                    //temp += tile;
+                    //Log.i("notification", "NOTIFICATION TESTING...."+ tile.toString());
                     if (stackedLayout.empty()) {
+                        //display actual words when stack is empty..indicates end of game
                         TextView messageBox = (TextView) findViewById(R.id.message_box);
                         messageBox.setText(word1 + " " + word2);
+                        //retrieve data from views
+                       // LinearLayout box1 = (LinearLayout) findViewById(R.id.word1);
+
+                        //notification tells user if they one depending on their guess
+
                     }
                     placedTiles.push(tile);
+                    //Log.i("placed tiles", placedTiles.peek()+" placed");
                     return true;
             }
             return false;
@@ -217,7 +227,7 @@ public class MainActivity extends AppCompatActivity {
         //add elements to arraylist
         ArrayList<LetterTile> t = new ArrayList<LetterTile>();
 
-        for(int i=temp.length()-1;i>0;i--){
+        for(int i=temp.length()-1;i>=0;i--){
             stackedLayout.push(new LetterTile(this, temp.charAt(i)));
         }
 
