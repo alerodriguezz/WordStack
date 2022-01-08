@@ -3,7 +3,7 @@ This workshop is part of the Applied CS with Android course:
 
 http://g.co/cswithandroid
 
-The goal of this project was to implement the drag and drop functionality, and make the undo button work. The primary data structures used by this activity was stacks and queues. 
+The goal of this project was to implement the drag and drop functionality, create the logic that displays the order that the letters are displayed, and make the undo button work. The primary data structures used by this activity was stacks and queues. I also incorporated a label that lets the user know when they have guessed the word correctly. 
 
 # Gif Walkthrough
 <img src="http://g.recordit.co/ixKLFXq5aF.gif" width=250><br>
